@@ -27,34 +27,135 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="STUFF"
-                            android:id="@+id/tv1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="STUFF"
-                            android:id="@+id/tv2"
-                            android:layout_below="@+id/tv1"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="STUFF"
-                            android:id="@+id/tv3"
-                            android:layout_below="@+id/tv2"/>
+                            android:text="Patient Name: "
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/pName"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="STUFF"
-                            android:id="@+id/tv4"
-                            android:layout_below="@+id/tv3"/>
+                            android:text="mr blah "
+                            android:layout_toEndOf="@+id/pName"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/name"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="DOB: "
+                            android:id="@+id/dob"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/pName"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age: "
+                            android:id="@+id/age"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/dob"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="STUFF"
-                            android:id="@+id/tv5"
-                            android:layout_below="@+id/tv4"/>
+                            android:text="Gender: "
+                            android:id="@+id/gender"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/age"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Admit Type: "
+                            android:id="@+id/aType"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/gender"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Room: "
+                            android:id="@+id/room"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/aType"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Procedure Date: "
+                            android:id="@+id/pDate"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/room"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Surgical Staff: "
+                            android:id="@+id/sStaff"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/pDate"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Procedure: "
+                            android:id="@+id/procedure"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/sStaff"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PreOp Diagnosis: "
+                            android:id="@+id/pOpDiagnosis"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/procedure"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Patient Profile: "
+                            android:id="@+id/pProfile"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/pOpDiagnosis"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="The patient is a 32 year old female.
+                        The patient has symptoms of abdominal pain. Refer to note in patient chart for
+                        documentation of history and physical. previously obtained ct showed: stones found in the
+                        gallbladder. the patient has failed previous conservative treatment. laparoscopy is
+                        recommended due to the patient's progressive symptoms. the altnernatives, risks and
+                        benefits of surgery were discussed with the patient. THe patient verbalized
+                        understanding of the risks as well as the alternatives to surgery. The patient wished
+                        to proceed with operative intervention"
+                            android:layout_toEndOf="@+id/pName"
+                            android:layout_below="@id/pProfile"
+                            android:layout_above="@+id/anesthesia"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/pProfileText"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Anesthesia: "
+                            android:id="@+id/anesthesia"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_below="@+id/pProfile"/>
+
 
                     </RelativeLayout>
                     </ScrollView>
@@ -79,18 +180,4 @@
 
 
     </FrameLayout>
-
-    <!-- android:layout_gravity="start" tells DrawerLayout to treat
-         this as a sliding drawer on the left side for left-to-right
-         languages and on the right side for right-to-left languages.
-         If you're not building against API 17 or higher, use
-         android:layout_gravity="left" instead. -->
-    <!-- The drawer is given a fixed width in dp and extends the full height of
-         the container. -->
-    <fragment android:id="@+id/navigation_drawer"
-        android:layout_width="@dimen/navigation_drawer_width" android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:name="com.medical.parakeet.parakeet.NavigationDrawerFragment"
-        tools:layout="@layout/fragment_navigation_drawer" />
-
 </android.support.v4.widget.DrawerLayout>
