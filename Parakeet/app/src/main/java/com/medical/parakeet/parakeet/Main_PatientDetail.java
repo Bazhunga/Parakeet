@@ -41,8 +41,7 @@ public class Main_PatientDetail extends ActionBarActivity{
 
         LinearLayout scroll = (LinearLayout) findViewById(R.id.textview);
         LayoutInflater inflater =  (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-       // View view = inflater.inflate(R.layout.textview, null);
-        TextView view = new TextView(this.getApplicationContext());
+        View view = inflater.inflate(R.layout.textview, null);
         scroll.addView(view);
 
     }
