@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
     android:background="#FFFFFF"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
+        android:background="@drawable/label_background"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:textSize="18sp"
         android:textColor="#000000"
-        android:text="May Fong Robinson"
+        android:text="blah"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:id="@+id/text"
+        android:text="ehh"
+        android:textColor="#6C7A89"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="10dp"
-        android:text="Beautiful star-shaped spillway, Kechut Reservoir, Jermuk, Armenia"
+        android:paddingLeft="2dp"
+        android:textSize="15sp"
+        android:layout_below="@id/label"
+        android:layout_alignLeft="@id/label"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</LinearLayout>
+</RelativeLayout>
