@@ -21,12 +21,13 @@
                     android:layout_width="0dp"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:background="#0AA000">
+                    android:id="@+id/scrollView">
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:id="@+id/blah">
 
-                        <LinearLayout
+                       <!-- <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/llpName"
@@ -35,7 +36,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Patient Name: "
-                                android:textColor="#00FF00"
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginRight="1dp"
                                 android:id="@+id/pName"/>
@@ -49,9 +49,9 @@
                                 android:layout_marginBottom="5dp"
                                 android:layout_marginRight="2dp"
                                 android:id="@+id/pNameText"/>
-                        </LinearLayout>
+                        </LinearLayout>-->
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/llpName"
@@ -367,7 +367,7 @@
                                 android:layout_marginRight="2dp"
                                 android:id="@+id/anesthesiaText"/>
                         </LinearLayout>
-
+-->
                     </RelativeLayout>
                     </ScrollView>
                 <RelativeLayout
