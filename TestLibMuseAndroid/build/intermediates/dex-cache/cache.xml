@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/kevin/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-6bcfacd8a56c17ffcefa03817ad1e098d9e2cc5c.jar" />
+    </item>
+    <item
+        jar="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/libs/libmuseandroid.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9022422865263ca7c52cee9db33e0862d51e2461">
+        <dex dex="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/libmuseandroid-dfad6170daff103ced3ac5c71f4ab9c46cb86b8e.jar" />
+    </item>
+    <item
+        jar="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/classes-0572953275c41eeed2ad852d73c5ba7850b4e178.jar" />
+    </item>
+    <item
+        jar="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3d383bea00d0ea8eaa1ad59ad21009408d0f1dc6.jar" />
+    </item>
+
+</items>

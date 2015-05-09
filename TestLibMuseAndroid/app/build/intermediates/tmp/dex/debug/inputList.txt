@@ -1,0 +1,5 @@
+/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/classes/debug
+/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-6bcfacd8a56c17ffcefa03817ad1e098d9e2cc5c.jar
+/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/libmuseandroid-dfad6170daff103ced3ac5c71f4ab9c46cb86b8e.jar
+/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3d383bea00d0ea8eaa1ad59ad21009408d0f1dc6.jar
+/home/kevin/PersonalProjects/ParakeetMedical/TestLibMuseAndroid/app/build/intermediates/pre-dexed/debug/classes-0572953275c41eeed2ad852d73c5ba7850b4e178.jar

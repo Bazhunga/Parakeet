@@ -1,11 +1,12 @@
 package com.medical.parakeet.parakeet;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class Main_PatientDetail extends ActionBarActivity{
 
     View decorView;
+    Context ctxt = this;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,11 +30,20 @@ public class Main_PatientDetail extends ActionBarActivity{
             //TextView view = new TextView(this.getApplicationContext());
             LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.tile, null);
-            TextView internal = (TextView )view.findViewById(R.id.name);
+            TextView internal = (TextView)view.findViewById(R.id.name);
             internal.setText(i + "");
             scroll.addView(view);
 
         }
+        Button testBeacon = (Button) findViewById(R.id.testbeacon);
+        testBeacon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ctxt, TestBeacons.class);
+                startActivity(intent);
+            }
+        });
+
         decorView = getWindow().getDecorView();
         stickyImmersion(decorView);
     }
