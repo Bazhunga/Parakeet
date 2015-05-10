@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v7.app.ActionBarActivity;
@@ -30,7 +31,7 @@ public class Main_PatientDetail extends ActionBarActivity{
 
     View decorView;
     //Makes labels for view
-    List<String> labelList = Arrays.asList("Patient Name:", "DOB:", "Age:", "Gender:",
+    List<String> labelList = Arrays.asList("Patient Name:", "Date of Birth:", "Age:", "Gender:",
             "Admit Type:", "Room:", "Procedure Date:", "Surgical Staff:", "PreOp Diagnosis:",
             "Patient Profile:", "Anesthesia", "Findings");
     //Match labels with database attributes
@@ -52,10 +53,17 @@ public class Main_PatientDetail extends ActionBarActivity{
 
     private int turnStile = 0;
 
+    Typeface latoreg;
+    Typeface latoNar;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__patient_detail);
+
+        latoreg = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Regular.ttf");
+        latoNar = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Light.ttf");
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Log.d("start beacon manager", "STARTED");
@@ -115,6 +123,11 @@ public class Main_PatientDetail extends ActionBarActivity{
                         text = (TextView) view.findViewById(R.id.text);
                         label = (TextView) view.findViewById(R.id.label);
                         label.setText(labelList.get(i));
+                        label.setTextSize(28);
+                        label.setTypeface(latoreg);
+                        text.setTextSize(22);
+                        text.setTypeface(latoNar);
+                        text.setTextColor(getResources().getColor(R.color.white));
                         text.setText(patient_object.getString(columnList.get(i)));
                         //TextView view = new TextView(this.getApplicationContext());
                         scroll.addView(view);
