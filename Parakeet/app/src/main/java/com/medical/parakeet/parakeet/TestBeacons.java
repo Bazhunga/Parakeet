@@ -1,6 +1,5 @@
 package com.medical.parakeet.parakeet;
 
-import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,15 +18,17 @@ import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.Region;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 
-public class TestBeacons extends Activity {
+public class TestBeacons extends ActionBarActivity {
 
-    private static final String TAG = TestBeacons.class.getSimpleName();
+    private static final String ESTIMOTE_PROXIMITY_UUID = "B9407F30-F5F8-466E-AFF9-25556B57FE6D";
+    private static final Region ALL_ESTIMOTE_BEACONS = new Region("regionId", ESTIMOTE_PROXIMITY_UUID, null, null);
+    private BeaconManager beaconManager = new BeaconManager(this);
+
+    private static final String TAG = "BEEEERCAN";
     private static final int NOTIFICATION_ID = 123;
 
-    private BeaconManager beaconManager;
     private NotificationManager notificationManager;
     private Region region;
 
@@ -35,26 +37,34 @@ public class TestBeacons extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_beacons);
 
-        Beacon beacon = new Beacon("b9407f30-f5f8-466e-aff9-25556b57fe6d", "blueberry", "CA:30:32:DC:CD:18", 52504, 13020, -12, -59);
-        region = new Region("regionId", beacon.getProximityUUID(), beacon.getMajor(), beacon.getMinor());
+        //Beacon beacon = new Beacon("b9407f30-f5f8-466e-aff9-25556b57fe6d", "blueberry", "CA:30:32:DC:CD:18", 52504, 13020, -12, -59);
+        //region = new Region("regionId", beacon.getProximityUUID(), beacon.getMajor(), beacon.getMinor());
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        beaconManager = new BeaconManager(this);
-
-        // Default values are 5s of scanning and 25s of waiting time to save CPU cycles.
-        // In order for this demo to be more responsive and immediate we lower down those values.
-        beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(1), 0);
-
-        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
-            @Override
-            public void onEnteredRegion(Region region, List<Beacon> beacons) {
-                postNotification("Entered region");
-            }
-
-            @Override
-            public void onExitedRegion(Region region) {
-                postNotification("Exited region");
+        Log.d("start beacon manager", "aiugh");
+        beaconManager.setRangingListener(new BeaconManager.RangingListener() {
+            @Override public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
+                Log.d(TAG, "Ranged beacons: " + beacons);
+                for (int i = 0; i < beacons.size(); i++){
+                    Log.d(TAG, beacons.get(i).getMacAddress());
+                }
             }
         });
+
+//        // Default values are 5s of scanning and 25s of waiting time to save CPU cycles.
+//        // In order for this demo to be more responsive and immediate we lower down those values.
+//        beaconManager.setBackgroundScanPeriod(TimeUnit.SECONDS.toMillis(1), 0);
+//
+//        beaconManager.setMonitoringListener(new BeaconManager.MonitoringListener() {
+//            @Override
+//            public void onEnteredRegion(Region region, List<Beacon> beacons) {
+//                postNotification("Entering Patient Space");
+//            }
+//
+//            @Override
+//            public void onExitedRegion(Region region) {
+//                postNotification("Exiting Patient Space");
+//            }
+//        });
     }
 
 
@@ -81,20 +91,27 @@ public class TestBeacons extends Activity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-
-        notificationManager.cancel(NOTIFICATION_ID);
+    public void onStart(){
+        super.onStart();
         beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
-            @Override
-            public void onServiceReady() {
+            @Override public void onServiceReady() {
                 try {
-                    beaconManager.startMonitoring(region);
+                    beaconManager.startRanging(ALL_ESTIMOTE_BEACONS);
                 } catch (RemoteException e) {
-                    Log.d(TAG, "Error while starting monitoring");
+                    Log.e(TAG, "Cannot start ranging", e);
                 }
             }
         });
+    }
+
+    @Override
+    public void onStop(){
+        // Should be invoked in #onStop.
+        try {
+            beaconManager.stopRanging(ALL_ESTIMOTE_BEACONS);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Cannot stop but it does not matter now", e);
+        }
     }
 
     @Override
@@ -114,7 +131,7 @@ public class TestBeacons extends Activity {
                 PendingIntent.FLAG_UPDATE_CURRENT);
         Notification notification = new Notification.Builder(TestBeacons.this)
                 .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle("Notify Demo")
+                .setContentTitle("Patient Found")
                 .setContentText(msg)
                 .setAutoCancel(true)
                 .setContentIntent(pendingIntent)
