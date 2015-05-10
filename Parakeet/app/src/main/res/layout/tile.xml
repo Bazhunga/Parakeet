@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <TextView
@@ -11,23 +10,25 @@
         android:layout_height="wrap_content"
         android:background="@drawable/label_background"
         android:paddingLeft="5dp"
-        android:paddingRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:paddingRight="15dp"
         android:textSize="18sp"
-        android:textColor="#000000"
+        android:textColor="#22313F"
         android:text="blah"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/text"
-        android:text="ehh"
-        android:textColor="#6C7A89"
+        android:textColor="#000000"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:paddingLeft="2dp"
+        android:layout_marginBottom="5dp"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:layout_below="@id/label"
-        android:layout_alignLeft="@id/label"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_alignLeft="@id/label" />
 
 </RelativeLayout>
