@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -56,13 +57,15 @@ public class Main_PatientDetail extends ActionBarActivity{
     Typeface latoreg;
     Typeface latoNar;
 
+    LinearLayout scroll;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__patient_detail);
 
-        latoreg = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Regular.ttf");
+        latoreg = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Bold.ttf");
         latoNar = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Light.ttf");
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -108,33 +111,94 @@ public class Main_PatientDetail extends ActionBarActivity{
                     Log.d("OH NOO, AN ERROR", String.valueOf(e));
                 } else {
                     //Get linearlayout from scrollview to add text dynamically
-                    LinearLayout scroll;
+
                     TextView text;
                     TextView label;
+                    View underline;
                     View view;
                     LayoutInflater inflater;
                     scroll = (LinearLayout) findViewById(R.id.tiles1);
-                    scroll.setBackgroundResource(R.drawable.parakeetbackground);
-
+//                    scroll.setBackgroundResource(R.drawable.parakeetbackground);
+//                    scroll.setBackgroundResource(R.drawable.grad_bg);
                     //Iterate through the columns to create labels + text
                     for (int i = 0; i < columnList.size(); i++) {
                         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         view = inflater.inflate(R.layout.tile, null);
                         text = (TextView) view.findViewById(R.id.text);
                         label = (TextView) view.findViewById(R.id.label);
+                        underline = (View) view.findViewById(R.id.line);
                         label.setText(labelList.get(i));
                         label.setTextSize(28);
                         label.setTypeface(latoreg);
+                        label.measure(0, 0);
+                        Log.d("Label width", String.valueOf(label.getMeasuredWidth()));
+                        underline.getLayoutParams().width = label.getMeasuredWidth() + 10;
                         text.setTextSize(22);
                         text.setTypeface(latoNar);
-                        text.setTextColor(getResources().getColor(R.color.white));
                         text.setText(patient_object.getString(columnList.get(i)));
-                        //TextView view = new TextView(this.getApplicationContext());
                         scroll.addView(view);
+                    }
+                    updateFigure(patient_object.getString("bodyParts"));
+                }
+            }
+        });
+    }
+
+    public void refreshPatient(View view){
+        turnStile = 0;
+        scroll.removeAllViews();
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Log.d("start beacon manager", "STARTED");
+        beaconManager.setRangingListener(new BeaconManager.RangingListener() {
+            @Override public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
+                Log.d(TAG, "Ranged beacons: " + beacons);
+//                for (int i = 0; i < beacons.size(); i++){
+//                    Log.d(TAG, beacons.get(i).getMacAddress());
+//                }
+                if (turnStile == 0){
+                    currentPatient = beacons.get(0);
+                    if (currentPatient != null){
+                        Log.d("Current patient MAC Address", currentPatient.getMacAddress());
+                        //Populate the view with background parse call
+                        parseGet(currentPatient.getMacAddress());
+                        turnStile = 1;
                     }
                 }
             }
         });
+
+    }
+
+    public void updateFigure(String bodyparts){
+        String [] parts = bodyparts.split(", ");
+        ImageView head = (ImageView) findViewById(R.id.head);
+        ImageView larm = (ImageView) findViewById(R.id.larm);
+        ImageView rarm = (ImageView) findViewById(R.id.rarm);
+        ImageView upbod = (ImageView) findViewById(R.id.upbod);
+        ImageView lowbod = (ImageView) findViewById(R.id.lowbod);
+        ImageView leftleg = (ImageView) findViewById(R.id.leftleg);
+        ImageView rightleg = (ImageView) findViewById(R.id.rightleg);
+
+        for (int i = 0; i < parts.length; i++ ){
+            switch(parts[i]){
+                case "head": head.setImageResource(R.drawable.status_bad_head);
+                    break;
+                case "larm": larm.setImageResource(R.drawable.status_bad_larm);
+                    break;
+                case "rarm": rarm.setImageResource(R.drawable.status_bad_rarm);
+                    break;
+                case "upbod": upbod.setImageResource(R.drawable.status_bad_upbod);
+                    break;
+                case "lowbod": lowbod.setImageResource(R.drawable.status_bad_lowbod);
+                    break;
+                case "leftleg": leftleg.setImageResource(R.drawable.status_bad_leftleg);
+                    break;
+                case "rightleg": rightleg.setImageResource(R.drawable.status_bad_rightleg);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     @Override

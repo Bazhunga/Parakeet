@@ -8,22 +8,30 @@
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/label_background"
         android:paddingLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:paddingRight="15dp"
         android:textSize="18sp"
-        android:textColor="#22313F"
+        android:textColor="@color/fbutton_color_midnight_blue"
         android:text="blah"
         android:textStyle="bold" />
 
+    <View
+        android:layout_width="205dp"
+        android:layout_height="2dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/underline_grad"
+        android:layout_below="@+id/label"
+        android:id="@+id/line"/>
+
     <TextView
         android:id="@+id/text"
-        android:textColor="#000000"
+        android:textColor="@color/fbutton_color_midnight_blue"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
+        android:paddingTop="6dp"
         android:paddingLeft="2dp"
         android:layout_marginBottom="5dp"
         android:textSize="15sp"

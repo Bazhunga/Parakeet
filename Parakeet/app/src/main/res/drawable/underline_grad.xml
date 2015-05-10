@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <gradient
+                android:angle="180"
+                android:startColor="@color/white_transparent"
+                android:endColor="@color/fbutton_color_midnight_blue"
+                android:type="linear" />
+        </shape>
+    </item>
+</selector>

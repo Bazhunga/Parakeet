@@ -5,85 +5,109 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="2"
-    android:background="@color/fbutton_color_clouds"
+    android:background="@drawable/grad_bg"
     xmlns:android="http://schemas.android.com/apk/res/android">
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:orientation="horizontal"
-                android:layout_weight="1">
+                android:layout_height="fill_parent" >
 
-                <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <LinearLayout
-                        android:id="@+id/tiles1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                    </LinearLayout>
-                </ScrollView>
-
+                <LinearLayout
+                    android:id="@+id/tiles1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:background="@color/blue_semi_transparent_pressed"
-                android:layout_weight="1">
+            </ScrollView>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_head"
-                    android:id="@+id/head"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/larm"
-                    android:src="@drawable/status_good_larm"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_rarm"
-                    android:id="@+id/rarm"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_upbod"
-                    android:id="@+id/upbod"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_lowbod"
-                    android:id="@+id/lowbod"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_leftleg"
-                    android:id="@+id/leftleg"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/status_good_rightleg"
-                    android:id="@+id/rightleg"
-                    android:layout_weight="0.27"
-                    android:layout_gravity="center"/>
-
-
-
-            </RelativeLayout>
         </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_head"
+                android:id="@+id/head"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/larm"
+                android:src="@drawable/status_good_larm"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_rarm"
+                android:id="@+id/rarm"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_upbod"
+                android:id="@+id/upbod"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_lowbod"
+                android:id="@+id/lowbod"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_leftleg"
+                android:id="@+id/leftleg"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/status_good_rightleg"
+                android:id="@+id/rightleg"
+                android:layout_weight="0.27"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:onClick="refreshPatient"
+                android:src="@drawable/circle"/>
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingTop="23dp"
+                android:paddingLeft="8dp"
+                android:textColor="@color/fbutton_color_midnight_blue"
+                android:clickable="true"
+                android:onClick="refreshPatient"
+                android:text="Refresh"/>
+
+
+
+        </RelativeLayout>
+</LinearLayout>
