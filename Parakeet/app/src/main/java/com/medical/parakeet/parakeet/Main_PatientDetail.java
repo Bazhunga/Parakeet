@@ -173,6 +173,12 @@ public class Main_PatientDetail extends ActionBarActivity{
                     }
 
                     view = inflater.inflate(R.layout.doctornotes, null);
+                    EditText et = (EditText) view.findViewById(R.id.dnotes);
+                    String dbnotes = patient_object.getString("notes");
+                    if (dbnotes != null){
+                        Log.d("notes", dbnotes);
+                        et.setText(dbnotes);
+                    }
                     scroll.addView(view);
                     updateFigure(patient_object.getString("bodyParts"));
                 }
