@@ -57,6 +57,8 @@ public class Main_PatientDetail extends ActionBarActivity{
     Typeface latoreg;
     Typeface latoNar;
 
+    LinearLayout scroll;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -109,7 +111,7 @@ public class Main_PatientDetail extends ActionBarActivity{
                     Log.d("OH NOO, AN ERROR", String.valueOf(e));
                 } else {
                     //Get linearlayout from scrollview to add text dynamically
-                    LinearLayout scroll;
+
                     TextView text;
                     TextView label;
                     View underline;
@@ -140,6 +142,31 @@ public class Main_PatientDetail extends ActionBarActivity{
                 }
             }
         });
+    }
+
+    public void refreshPatient(View view){
+        turnStile = 0;
+        scroll.removeAllViews();
+        notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Log.d("start beacon manager", "STARTED");
+        beaconManager.setRangingListener(new BeaconManager.RangingListener() {
+            @Override public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
+                Log.d(TAG, "Ranged beacons: " + beacons);
+//                for (int i = 0; i < beacons.size(); i++){
+//                    Log.d(TAG, beacons.get(i).getMacAddress());
+//                }
+                if (turnStile == 0){
+                    currentPatient = beacons.get(0);
+                    if (currentPatient != null){
+                        Log.d("Current patient MAC Address", currentPatient.getMacAddress());
+                        //Populate the view with background parse call
+                        parseGet(currentPatient.getMacAddress());
+                        turnStile = 1;
+                    }
+                }
+            }
+        });
+
     }
 
     public void updateFigure(String bodyparts){
