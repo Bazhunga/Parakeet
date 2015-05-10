@@ -12,9 +12,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
@@ -56,6 +58,8 @@ public class Main_PatientDetail extends ActionBarActivity{
     private Beacon currentPatient;
 
     private int turnStile = 0;
+
+    private String currentObjectId;
 
     Typeface latoreg;
     Typeface latoNar;
@@ -131,6 +135,9 @@ public class Main_PatientDetail extends ActionBarActivity{
                     inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     view = inflater.inflate(R.layout.phototile, null);
 
+                    //Update current patient id
+                    currentObjectId = patient_object.getObjectId();
+
                     //Get the photo
                     ParseFile image = patient_object.getParseFile("Photo");
                     ParseImageView parseImage = (ParseImageView) view.findViewById(R.id.parseImage);
@@ -164,10 +171,46 @@ public class Main_PatientDetail extends ActionBarActivity{
                         text.setText(patient_object.getString(columnList.get(i)));
                         scroll.addView(view);
                     }
+
+                    view = inflater.inflate(R.layout.doctornotes, null);
+                    scroll.addView(view);
                     updateFigure(patient_object.getString("bodyParts"));
                 }
             }
         });
+    }
+
+    public void commitNotes(View view){
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        EditText et = (EditText) findViewById(R.id.dnotes);
+        final String notes = et.getText().toString();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Patient");
+        query.getInBackground(currentObjectId, new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject editingObject, ParseException e) {
+                if (e == null) {
+                    editingObject.put("notes", notes);
+                    editingObject.saveEventually();
+
+                    Context context = getApplicationContext();
+                    CharSequence text = "Note committed.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+                else{
+                    Context context = getApplicationContext();
+                    CharSequence text = "Failed to commit.";
+                    int duration = Toast.LENGTH_SHORT;
+
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                }
+
+            }
+        });
+
     }
 
     public void refreshPatient(View view){
