@@ -66,11 +66,13 @@ public class Main_PatientDetail extends ActionBarActivity{
 //                    Log.d(TAG, beacons.get(i).getMacAddress());
 //                }
                 if (turnStile == 0){
-                    Log.d("Current patient MAC Address", currentPatient.getMacAddress())
                     currentPatient = beacons.get(0);
-                    //Populate the view with background parse call
-                    parseGet(currentPatient.getMacAddress());
-                    turnStile = 1;
+                    if (currentPatient != null){
+                        Log.d("Current patient MAC Address", currentPatient.getMacAddress());
+                        //Populate the view with background parse call
+                        parseGet(currentPatient.getMacAddress());
+                        turnStile = 1;
+                    }
                 }
             }
         });
@@ -139,6 +141,7 @@ public class Main_PatientDetail extends ActionBarActivity{
     @Override
     public void onStop(){
         // Should be invoked in #onStop.
+        super.onStop();
         try {
             beaconManager.stopRanging(ALL_ESTIMOTE_BEACONS);
         } catch (RemoteException e) {
