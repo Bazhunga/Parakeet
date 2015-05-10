@@ -20,7 +20,10 @@ import com.estimote.sdk.Beacon;
 import com.estimote.sdk.BeaconManager;
 import com.estimote.sdk.Region;
 import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -32,11 +35,11 @@ public class Main_PatientDetail extends ActionBarActivity{
 
     View decorView;
     //Makes labels for view
-    List<String> labelList = Arrays.asList("Patient Name:", "Date of Birth:", "Age:", "Gender:",
+    List<String> labelList = Arrays.asList("Date of Birth:", "Age:", "Gender:",
             "Admit Type:", "Room:", "Procedure Date:", "Surgical Staff:", "PreOp Diagnosis:",
             "Patient Profile:", "Anesthesia", "Findings");
     //Match labels with database attributes
-    List<String> columnList = Arrays.asList("pName", "dob", "age", "gender",
+    List<String> columnList = Arrays.asList("dob", "age", "gender",
             "aType", "room", "pDate", "sStaff", "pOpDiagnosis", "pProfile",
             "anesthesia", "findings");
 
@@ -56,6 +59,7 @@ public class Main_PatientDetail extends ActionBarActivity{
 
     Typeface latoreg;
     Typeface latoNar;
+    Typeface latoblack;
 
     LinearLayout scroll;
 
@@ -67,6 +71,7 @@ public class Main_PatientDetail extends ActionBarActivity{
 
         latoreg = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Bold.ttf");
         latoNar = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Light.ttf");
+        latoblack = Typeface.createFromAsset(this.getAssets(), "fonts/Lato-Black.ttf");
 
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Log.d("start beacon manager", "STARTED");
@@ -83,6 +88,11 @@ public class Main_PatientDetail extends ActionBarActivity{
                         //Populate the view with background parse call
                         parseGet(currentPatient.getMacAddress());
                         turnStile = 1;
+                        try {
+                            beaconManager.stopRanging(ALL_ESTIMOTE_BEACONS);
+                        } catch (RemoteException e) {
+                            Log.e(TAG, "Cannot stop but it does not matter now", e);
+                        }
                     }
                 }
             }
@@ -118,11 +128,27 @@ public class Main_PatientDetail extends ActionBarActivity{
                     View view;
                     LayoutInflater inflater;
                     scroll = (LinearLayout) findViewById(R.id.tiles1);
-//                    scroll.setBackgroundResource(R.drawable.parakeetbackground);
-//                    scroll.setBackgroundResource(R.drawable.grad_bg);
+                    inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                    view = inflater.inflate(R.layout.phototile, null);
+
+                    //Get the photo
+                    ParseFile image = patient_object.getParseFile("Photo");
+                    ParseImageView parseImage = (ParseImageView) view.findViewById(R.id.parseImage);
+                    parseImage.setParseFile(image);
+                    parseImage.loadInBackground(new GetDataCallback() {
+                        @Override
+                        public void done(byte[] data, ParseException e) {
+
+                        }
+                    });
+                    text = (TextView) view.findViewById(R.id.name);
+                    text.setText(patient_object.getString("pName"));
+                    text.setTypeface(latoblack);
+                    text.setTextSize(35);
+                    scroll.addView(view);
+
                     //Iterate through the columns to create labels + text
                     for (int i = 0; i < columnList.size(); i++) {
-                        inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                         view = inflater.inflate(R.layout.tile, null);
                         text = (TextView) view.findViewById(R.id.text);
                         label = (TextView) view.findViewById(R.id.label);
@@ -147,8 +173,21 @@ public class Main_PatientDetail extends ActionBarActivity{
     public void refreshPatient(View view){
         turnStile = 0;
         scroll.removeAllViews();
+        //Set the man to green;
+        resetFigure();
+
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Log.d("start beacon manager", "STARTED");
+        beaconManager.connect(new BeaconManager.ServiceReadyCallback() {
+            @Override public void onServiceReady() {
+                try {
+                    beaconManager.startRanging(ALL_ESTIMOTE_BEACONS);
+                } catch (RemoteException e) {
+                    Log.e(TAG, "Cannot start ranging", e);
+                }
+            }
+        });
+
         beaconManager.setRangingListener(new BeaconManager.RangingListener() {
             @Override public void onBeaconsDiscovered(Region region, List<Beacon> beacons) {
                 Log.d(TAG, "Ranged beacons: " + beacons);
@@ -166,6 +205,25 @@ public class Main_PatientDetail extends ActionBarActivity{
                 }
             }
         });
+
+    }
+
+    public void resetFigure(){
+        ImageView head = (ImageView) findViewById(R.id.head);
+        ImageView larm = (ImageView) findViewById(R.id.larm);
+        ImageView rarm = (ImageView) findViewById(R.id.rarm);
+        ImageView upbod = (ImageView) findViewById(R.id.upbod);
+        ImageView lowbod = (ImageView) findViewById(R.id.lowbod);
+        ImageView leftleg = (ImageView) findViewById(R.id.leftleg);
+        ImageView rightleg = (ImageView) findViewById(R.id.rightleg);
+
+        head.setImageResource(R.drawable.status_good_head);
+        larm.setImageResource(R.drawable.status_good_larm);
+        rarm.setImageResource(R.drawable.status_good_rarm);
+        upbod.setImageResource(R.drawable.status_good_upbod);
+        lowbod.setImageResource(R.drawable.status_good_lowbod);
+        leftleg.setImageResource(R.drawable.status_good_leftleg);
+        rightleg.setImageResource(R.drawable.status_good_rightleg);
 
     }
 
