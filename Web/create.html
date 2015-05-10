@@ -1,0 +1,97 @@
+<html>
+	<head>
+		<title>Parakeet</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="public/stylesheet.css">
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        
+	<script src="jquery-1.11.1.min.js"></script>
+        <script src="http://www.parsecdn.com/js/parse-1.0.19.min.js"></script>
+	</head>
+    
+	<body>
+        <script src="http://www.parsecdn.com/js/parse-1.0.19.min.js">
+        Parse.initialize("JIPThRPo44v22ZiPuVYdoqqJOJMWenXZcisfa8ut", "zON2v8fTIFXlZ84Z70hykbUHZYjaQrYq2gdIRLOd");
+        </script>
+       <img src="public/images/splash.png" style="width: 120%; position: fixed;"></img>
+   
+       <img src = "public/images/paco.png" class = "jumpImg2"></img>      
+            <a href ="index.html"> <p  class = "addButton" style = "left:3%; top:3%;" >&laquo;</p></a>
+<h1 style = "font-size:100px; font-style: italic; position:fixed; left: 10%; color: #3FC380;">Patient &nbsp Information</h1>
+
+<form style = "color: #000; background: rgba(255, 255, 255, 0); position: fixed; left:3%; top:20%; font-family: 'Lato'" method="post" action="/">
+    
+    <table>
+        <tr>
+            <td class = "tableColumn">
+                <h4>Patient &nbsp Name</h4>
+                <input type="text" name="user[name]">
+            </td>
+            <td class = "tableColumn">
+                <h4>Date &nbsp of &nbsp Birth</h4>
+                <input type="text" name="user[dob]">
+            </td>
+            <td class = "tableColumn">
+                <h4> Age </h4>
+                <input type="text" name="user[age]">
+            </td>
+            <td class = "tableColumn">
+                <h4> Gender </h4>
+                <input type="text" name="user[gender]">
+            </td>
+				
+        </tr>
+        <tr>
+            
+            <td class = "tableColumn">
+                <h4> Admit &nbsp Type </h4>
+                <input type="text" name="user[aType]">
+            </td>
+            <td class = "tableColumn">
+                <h4> Room &nbsp Number </h4>
+                <input type="text" name="user[room]">
+            </td>
+        </tr>
+         <tr>
+            <td class = "tableColumn">
+                <h4> Procedure &nbsp Date </h4>
+                <input type="text" name="user[pDate]">
+            </td>
+            <td class = "tableColumn">
+                <h4>Surgical &nbsp Staff</h4>
+                <input type="text" name="user[sStaff]">
+            </td>
+            <td class = "tableColumn">
+                <h4>Anesthesia</h4>
+                <input type="text" name="user[anes]">
+            </td>
+        </tr>
+        <tr>
+            <td class = "tableColumn">
+                <h4> PreOp &nbsp Diognosis </h4>
+                <input type="text" name="user[preOp]">
+            </td>
+            <td class = "tableColumn">
+                <h4> Patient &nbsp Profile </h4>
+                <input type="text" name="user[pProfile]">
+            </td>
+            <td class = "tableColumn">
+                <h4> Findings </h4>
+                <input type="text" name="user[find]">
+            </td>
+        </tr>
+        <tr>
+            <td class = "tableColumn">
+                <h4>Body &nbsp Condition</h4>
+                <input type="text" name="user[body]">
+            </td><!---->
+            <td>
+            <input id = "save" type = "button" value = "Save Patient" onclick = "doFunction();"></td>
+        </tr>
+        
+    </table>
+</form>
+<input type="button">
+<div style = "position: fixed; width: 100%; height: 7%; background: #3FC380; bottom: 0px;"></div>
+	</body>
+    
+</html>

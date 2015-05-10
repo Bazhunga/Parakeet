@@ -1,0 +1,355 @@
+/*******************************************************************************
+Custom Theme
+-Vanshil Shah
+*******************************************************************************/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 2;
+    width: 100%;
+}
+
+/*******************************************************************************
+Theme Styles
+*******************************************************************************/
+@font-face{
+    font-family: Eras;
+    src: url(eras.ttf);
+}
+body {
+    color:#000;
+    background: #fff;
+    font-family: Eras;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color:#000;
+    font:  'Calibri;
+        letter-spacing: -1px;
+}
+h1 {
+    font-size: 36px;
+    font-weight: 100;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 100;
+}
+
+h3 {
+    font-size: 34px;
+    font-weight: 100;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 100;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: 100;
+}
+
+h6 {
+    color: #BDC3C7;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 200;
+    color: #494C4E;
+}
+a:hover, a:focus {text-decoration: underline;}
+footer {
+    color: #226458;
+    text-decoration: underline;
+}
+
+/*******************************************************************************
+Full-Width Styles
+*******************************************************************************/
+
+.nav{
+    display: block;
+    position: fixed;
+    top: 0px;
+    height: 35px;
+    color: #fff;
+    background: #3FC380;
+    padding: 0 0 0 10%;
+}
+
+.navButton{  
+    padding: 5px 5px 6px 5px;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 3px;
+    color: #fff;
+    background:#FDC113; 
+}
+#sub_page{  
+    width: 82%;
+    min-width: 650px;
+    max-width: 1400px;
+    height: 96vh;
+    min-height: 500px;
+    max-height: 850px;
+    margin: 0px auto;
+    /*background: #373737;*/
+    border-t
+}
+
+td.tableColumn{
+    padding: 15px;
+    border-top: 3px ridge #3FC380;
+    border-left: 1px dashed #3FC380;
+    border-right: 1px dashed #3FC380;
+}
+.addButton{
+    font-family: Eras;
+    position: fixed;
+    font-size: 60;
+    width: 74;
+    height: 74;
+    border-radius: 37px;
+    text-decoration: none;
+    text-align: center;
+    transition-duration: .5s;
+    background: #3FC380;
+    color: #fff;
+    bottom: 3%;
+    right: 3%; 
+}
+.addButton:hover{
+    text-decoration: none;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    font-size: 80;
+}
+.jumpImg{
+    position:absolute;
+    width: 25%;
+    transition-duration: .75s;
+    left: 69%;
+    top:13%;
+}
+.jumpImg:hover{
+    top: 7%;;
+}.jumpImg2{
+    position:fixed;
+    width: 35%;
+    transition-duration: .75s;
+    left: 65%;
+    top:13%;
+    max-height:80%;
+}
+.jumpImg2:hover{
+    top: 0px;;
+}
+.sub_border{
+    padding: 27px 0 15px 0;
+    border: 1px dashed #666;
+}
+.sub_page_header{
+    padding: 0px 0 5px 10px;
+    color: #000;
+    /*background: #494C4E;*/
+}
+#no_underline_white{
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 5px 13px 5px;
+}
+#no_underline_black{
+    color: #000;
+    text-decoration: none;
+}
+
+.thirds {
+    margin: 0.5%;
+    width: 30%;
+    min-width: 300px;
+    height: 175px;
+
+    font-size: 26px;
+    font-weight: 700;
+    transition-duration: .5s;
+    text-decoration: underline;
+    float: left;
+    text-align: center;	
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
+.thirds:hover {text-decoration: none; box-shadow: 0 10px 10px rgba(17, 17, 17, 0.6);}
+
+.clear{
+    clear: both;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+#button_Container{
+    width: 100%;  
+    color: #fff;  
+    background: #494C4E;
+}
+.project_Button{
+    display: block;
+    margin: 10px 10px 10px 10px;
+    padding: 30px 30px 30px 30px;
+    font-size: 26px;
+    font-weight: 200;
+    text-decoration: none;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
+    color #000;
+}
+#parakeet{
+    height: 95%;
+}
+
+#problem{
+    height: 95%;
+}
+
+#fix{
+    height: 95%;
+}
+
+#process{
+    height: 95%;
+}
+#orange{
+    background: #f1c40f;
+    text-decoration: none;
+    transition-duration: .5s;
+}
+#orange:hover, #orange:focus{background: #fd2;}
+
+#red{
+    color: #fff;
+    background: #E74C3C;
+    text-decoration: none;
+    transition-duration: .5s;
+}
+#red:hover, #red:focus {background: #f44;}
+#red2{
+    color: #fff;
+    text-shadow:
+        -1px -1px 0 #E74C3C,
+        1px -1px 0 #E74C3C,
+        -1px 1px 0 #E74C3C,
+        1px 1px 0 #E74C3C;;
+    background: #E74C3C;
+    text-decoration: none;
+}
+#blue{
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    transition-duration: .5s;
+}
+#blue:hover, #blue:focus {background: #47f;}
+
+
+/*******************************************************************************
+Small Device Styles
+*******************************************************************************/
+
+@media screen and (max-width: 480px) {
+    body {
+        font-size:14px;
+    }
+
+    #downloads {
+        display: none;
+    }
+
+    .inner {
+        min-width: 320px;
+        max-width: 480px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 21px;
+    }
+
+    h4 {
+        font-size: 18px;
+    }
+
+    h5 {
+        font-size: 14px;
+    }
+
+    h6 {
+        color: #fff;
+        font-size: 12px;
+    }
+    #sub_page{  
+        width: 82%;
+        min-width: 500px;
+        max-width: 1400px;
+        height: 97vh;
+        min-height: 500px;
+        max-height: 750px;
+        margin: 0px auto;
+        /*background: #373737;*/
+    }
+}
