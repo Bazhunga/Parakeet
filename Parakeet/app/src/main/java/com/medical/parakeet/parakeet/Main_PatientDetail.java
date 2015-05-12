@@ -88,7 +88,7 @@ public class Main_PatientDetail extends ActionBarActivity{
                 if (turnStile == 0){
                     currentPatient = beacons.get(0);
                     if (currentPatient != null){
-                        Log.d("Current patient MAC Address", currentPatient.getMacAddress());
+                        Log.d("patient MAC Address", currentPatient.getMacAddress());
                         //Populate the view with background parse call
                         parseGet(currentPatient.getMacAddress());
                         turnStile = 1;
@@ -240,7 +240,7 @@ public class Main_PatientDetail extends ActionBarActivity{
                 if (turnStile == 0){
                     currentPatient = beacons.get(0);
                     if (currentPatient != null){
-                        Log.d("Current patient MAC Address", currentPatient.getMacAddress());
+                        Log.d("patient MAC Address", currentPatient.getMacAddress());
                         //Populate the view with background parse call
                         parseGet(currentPatient.getMacAddress());
                         turnStile = 1;

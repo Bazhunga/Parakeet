@@ -81,7 +81,10 @@
                 android:src="@drawable/status_good_rightleg"
                 android:id="@+id/rightleg"
                 android:layout_weight="0.27"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_toStartOf="@+id/imageView"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true" />
 
             <ImageView
                 android:layout_width="60dp"
@@ -92,7 +95,8 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:onClick="refreshPatient"
-                android:src="@drawable/circle"/>
+                android:src="@drawable/circle"
+                android:id="@+id/imageView" />
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
